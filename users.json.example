@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "user_id": "admin_user",
+      "role": "admin",
+      "queue_permissions": []
+    },
+    {
+      "user_id": "writer_user",
+      "role": "writer",
+      "queue_permissions": []
+    },
+    {
+      "user_id": "reader_user",
+      "role": "reader",
+      "queue_permissions": []
+    },
+    {
+      "user_id": "browser_user",
+      "role": "browser",
+      "queue_permissions": []
+    },
+    {
+      "user_id": "monitor_user",
+      "role": "monitor",
+      "queue_permissions": []
+    },
+    {
+      "user_id": "restricted_admin",
+      "role": "admin",
+      "queue_permissions": [
+        {
+          "queue_pattern": "SENSITIVE.*",
+          "allowed_actions": ["browse_message", "get_queue_info"],
+          "denied_actions": ["put_message", "get_message", "delete_message"]
+        },
+        {
+          "queue_pattern": "READONLY.*",
+          "allowed_actions": ["browse_message", "get_queue_info"],
+          "denied_actions": ["put_message", "get_message", "delete_message", "delete_queue"]
+        }
+      ]
+    },
+    {
+      "user_id": "queue_specific_writer",
+      "role": "reader",
+      "queue_permissions": [
+        {
+          "queue_pattern": "APP.QUEUE.*",
+          "allowed_actions": ["put_message", "get_message", "browse_message"],
+          "denied_actions": []
+        }
+      ]
+    }
+  ]
+}
